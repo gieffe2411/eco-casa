@@ -1,0 +1,54 @@
+# Import
+from flask import Flask, render_template
+
+print("Initializing Flask application...")
+print(Flask)
+
+
+app = Flask(__name__)
+
+def result_calculate(size, lights, device):
+    # Variabili che consentono di calcolare il consumo energetico degli apparecchi
+    home_coef = 100
+    light_coef = 0.04
+    devices_coef = 5
+    return size * home_coef + lights * light_coef + device * devices_coef
+
+print("Starting the Flask application...")
+
+# La prima pagina
+@app.route('/')
+def index():
+    print("Homepage accessed, rendering index.html")
+    return render_template('index.html')
+
+# La seconda pagina
+@app.route('/<size>')
+def lights(size):
+    return render_template(
+                            'lights.html',
+                            size=size
+                           )
+
+# La terza pagina
+@app.route('/<size>/<lights>')
+def electronics(size, lights):
+    return render_template(
+                            'electronics.html',
+                            size = size,
+                            lights = lights
+                           )
+
+# Calcolo
+@app.route('/<size>/<lights>/<device>')
+def end(size, lights, device):
+    return render_template('end.html',
+                            result=result_calculate(int(size),
+                                                    int(lights),
+                                                    int(device)
+                                                    )
+                        )
+
+print("Flask application setup complete, ready to run.")
+app.run(debug=True)
+print("Flask application is running...")
