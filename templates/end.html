@@ -33,6 +33,7 @@
         <img class="rez__img" src="../../static/img/planet_bad.svg" alt="">
         <span>Il tuo risultato: {{result}} kWh</span>
         <span>L'efficienza energetica della tua casa è inferiore alla media!</span>
+        <a href="{{url_for('form')}}" class="main__link">Vuoi migliorare la tua efficienza energetica? Clicca qui!</a>
         {%endif%}
     </div>
     {% endblock %}
