@@ -1,0 +1,18 @@
+<!-- Creare una pagina che restituisca i dati dell'utente -->
+<!doctype html>
+<html>
+    <head>
+        <title>Form compilato</title>
+    </head>
+    <body>
+        {%block content%}
+
+        <h1>Grazie per aver compilato il form!</h1>
+        <h2>I dati da te inseriti sono:</h2>
+        <p>Nome: {{name}}</p>
+        <p>Email: {{email}}</p>
+        <p>Indirizzo: {{address}}</p>
+        <p>Data: {{date}}</p>
+        {%endblock%}
+    </body>
+</html>

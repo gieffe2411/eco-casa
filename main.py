@@ -16,7 +16,7 @@ def result_calculate(size, lights, device):
 def index():
     return render_template('index.html')
 # La seconda pagina
-@app.route('/<size>')   
+@app.route('/<size>')
 def lights(size):
     return render_template(
                             'lights.html', 
@@ -51,11 +51,17 @@ def form():
 def submit_form():
     # Dichiarare le variabili per la raccolta dei dati
     name = request.form['name']
+    email = request.form["email"]
+    indirizzo = request.form["address"]
+    data = request.form["date"]
 
     # È possibile salvare i dati o inviarli via e-mail
     return render_template('form_result.html', 
                            # Inserire le variabili qui
                            name=name,
+                           email=email,
+                           address=indirizzo,
+                           date=data
                            )
 
 app.run(debug=True)
